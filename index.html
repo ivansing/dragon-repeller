@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>RPG - Dragon Repeller</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Dragon Repeller</h1>
+    </header>
+    <main id="game-container">
+        <section id="stats">
+            <div class="stat">XP: <strong><span id="xpText">0</span></strong></div>
+            <div class="stat">Health: <strong><span id="healthText">100</span></strong></div>
+            <div class="stat">Gold: <strong><span id="goldText">50</span></strong></div>
+        </section>
+
+        <section id="text" class="game-text">
+            Welcome to Dragon Repeller. You must defeat the dragon that is preventing people from leaving the town. You are in the town square. Where do you want to go? Use the buttons below.
+        </section>
+
+        <section id="controls">
+            <button id="button1" class="control-button">Go to store</button>
+            <button id="button2" class="control-button">Go to cave</button>
+            <button id="button3" class="control-button">Fight dragon</button>
+        </section>
+
+        <section id="monsterStats" class="monster-stats hidden">
+            <div class="stat">Monster Name: <strong><span id="monsterName"></span></strong></div>
+            <div class="stat">Health: <strong><span id="monsterHealth"></span></strong></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 RPG Game - Dragon Repeller</p>
+    </footer>
+    <script type="module" src="js/game.js"></script>
+</body>
+</html>

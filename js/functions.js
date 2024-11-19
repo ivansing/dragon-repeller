@@ -4,8 +4,37 @@ import { weapons, monsters, locations } from './data.js';
 import { state } from './state.js';
 import { dom } from './dom.js';
 
-// Define all game functions
+// Map function names to actual functions
+const functionMap = {
+  goTown,
+  goStore,
+  goCave,
+  buyHealth,
+  buyWeapon,
+  sellWeapon,
+  fightSlime,
+  fightBeast,
+  fightDragon,
+  attack,
+  dodge,
+  restart,
+  easterEgg,
+  pickTwo,
+  pickEight,
+};
 
+// Update function that uses functionMap
+export function update(location) {
+  dom.monsterStats.classList.add('hidden'); // Use classList to hide
+  for (let i = 0; i < 3; i++) {
+    dom['button' + (i + 1)].innerHTML = location['button text'][i];
+    const functionName = location['button functions'][i];
+    dom['button' + (i + 1)].onclick = functionMap[functionName];
+  }
+  dom.text.innerHTML = location.text;
+}
+
+// Game Functions
 export function goTown() {
   update(locations[0]);
 }
@@ -79,7 +108,7 @@ export function fightDragon() {
 export function goFight() {
   update(locations[3]);
   state.monsterHealth = monsters[state.fighting].health;
-  dom.monsterStats.style.display = 'block';
+  dom.monsterStats.classList.remove('hidden'); // Use classList to show
   dom.monsterName.innerText = monsters[state.fighting].name;
   dom.monsterHealthText.innerText = state.monsterHealth;
 }
@@ -194,34 +223,4 @@ export function pick(guess) {
       lose();
     }
   }
-}
-
-// Map function names to actual functions
-const functionMap = {
-  goTown,
-  goStore,
-  goCave,
-  buyHealth,
-  buyWeapon,
-  sellWeapon,
-  fightSlime,
-  fightBeast,
-  fightDragon,
-  attack,
-  dodge,
-  restart,
-  easterEgg,
-  pickTwo,
-  pickEight,
-};
-
-// Update function that uses functionMap
-export function update(location) {
-  dom.monsterStats.style.display = 'none';
-  for (let i = 0; i < 3; i++) {
-    dom['button' + (i + 1)].innerHTML = location['button text'][i];
-    const functionName = location['button functions'][i];
-    dom['button' + (i + 1)].onclick = functionMap[functionName];
-  }
-  dom.text.innerHTML = location.text;
 }
